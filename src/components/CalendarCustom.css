@@ -1,0 +1,62 @@
+
+.custom-calendar {
+    border: none;
+    font-family: 'Inter', sans-serif;
+    background-color: #f9fafb;
+    padding: 10px;
+  }
+  
+  /* Navigation (month/year header) */
+  .custom-calendar .react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .custom-calendar .react-calendar__navigation button {
+    background: #2563eb; 
+    color: white;
+    border-radius: 7px;
+    padding: 5px 5px 5px 5px;
+    font-weight: 200;
+    transition: 0.2s;
+    border: #e0f2fe 5px solid;
+  }
+  
+  .custom-calendar .react-calendar__navigation button:hover {
+    background: #1e40af; /* darker blue */
+  }
+  
+  /* Weekday labels */
+  .custom-calendar .react-calendar__month-view__weekdays {
+    text-align: center;
+    font-weight: 600;
+    color: #374151; 
+    margin-bottom: 4px;
+  }
+  
+  /* Day tiles */
+  .custom-calendar .react-calendar__tile {
+    border-radius: 6px;
+    padding: 10px;
+    transition: all 0.2s;
+  }
+  
+  .custom-calendar .react-calendar__tile:hover {
+    background-color: #e0f2fe; /* light blue */
+  }
+  
+  /* Selected day */
+  .custom-calendar .react-calendar__tile--active {
+    background: #2563eb !important;
+    color: white !important;
+    font-weight: bold;
+  }
+  
+  /* Today highlight */
+  .custom-calendar .react-calendar__tile--now {
+    background: #fef3c7; /* amber-100 */
+    border: 1px solid #f59e0b; /* amber-500 */
+    color: #92400e;
+  }
+  
