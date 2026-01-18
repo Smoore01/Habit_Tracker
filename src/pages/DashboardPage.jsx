@@ -34,30 +34,39 @@ const DashboardPage = () => {
   /* ---------------- ADD HABIT ---------------- */
   const handleAddHabit = async (habitName) => {
     try {
+      console.log("1. Selected date:", selectedDate);
+      console.log("2. Selected date string:", selectedDate.toDateString());
+      
+      const year = selectedDate.getFullYear();
+      const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+      const day = String(selectedDate.getDate()).padStart(2, '0');
+      const dateString = `${year}-${month}-${day}`;
+      
+      console.log("Sending date string:", dateString);
+      
       const res = await api.post("/habits", {
         name: habitName,
-        date: selectedDate,
+        date: dateString,
       });
-
+  
+      console.log("3. Backend response:", res.data);
+      console.log("3b. Raw date from backend:", res.data.date); // ADD THIS LINE HERE
+      console.log("4. Response date:", new Date(res.data.date).toDateString());
+      
       setHabits((prev) => [res.data, ...prev]);
     } catch (error) {
       console.error("Failed to add habit:", error);
     }
   };
-
   /* ---------------- MARK HABIT DONE ---------------- */
-  const handleMarkDone = async (habitId) => {
-    try {
-      const res = await api.put(`/habits/${habitId}/done`);
-  
-      setHabits((prev) =>
-        prev.map((habit) =>
-          habit._id === habitId ? res.data : habit
-        )
-      );
-    } catch (error) {
-      console.error("Failed to mark habit done:", error);
-    }
+  const handleMarkDone = (habitId) => {
+    setHabits((prev) =>
+      prev.map((habit) =>
+        (habit._id || habit.id) === habitId
+          ? { ...habit, completed: true, streak: habit.streak + 1 }
+          : habit
+      )
+    );
   };
   
 

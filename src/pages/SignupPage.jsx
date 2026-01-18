@@ -67,7 +67,7 @@ console.log("ENV URL:", import.meta.env.VITE_API_URL)
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Ibrahim"
+            placeholder="Full name"
             className="w-full px-4 py-2 border rounded-lg"
           />
 
