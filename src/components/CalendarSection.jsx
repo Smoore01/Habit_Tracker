@@ -9,7 +9,7 @@ const CalendarSection = ({ selectedDate, setSelectedDate }) => {
       <Calendar
         onChange={setSelectedDate}
         value={selectedDate}
-        className="custom-calendar rounded-lg"
+        className="custom-calendar rounded-lg  "
       />
     </div>
   );
